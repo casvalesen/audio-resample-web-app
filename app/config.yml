@@ -1,0 +1,3 @@
+file_type_extensions_map: 'file_type_extensions.json'
+output_file_type: 'MP3'
+output_sample_rate: 32000

@@ -1,0 +1,22 @@
+name: resample_app_env
+channels:
+  - default
+  - conda-forge 
+dependencies: 
+- python==3.8
+- python-multipart
+- pysoundfile
+- numpy 
+- scipy
+- librosa
+- fastapi
+- uvicorn 
+- pyaml
+- ipykernel
+- pytest
+- click
+- aiohttp
+- pip
+- pip: 
+  - ray
+  - ray[serve]
