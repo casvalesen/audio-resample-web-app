@@ -15,6 +15,12 @@ The app includes some audio format testfiles in the 'test/test_files' folder for
 
 # Usage
 
+## Docker deployment
+
+'docker build -t resample-app:v1 .' to build
+
+'docker run -it -d --name audio-resample-app -p 5000:5000 resample-app:v1' to run 
+
 ## Resample app conda deployment 
 
 'conda env create -f app_env.yml' to create environment 
@@ -26,4 +32,10 @@ The app includes some audio format testfiles in the 'test/test_files' folder for
 'conda env create -f test_env.yml' to create environment 
 
 'python test_script.py' to run test app. 
+
+## testing with Pytest
+
+'pytest test_script.py' runs two tests
+- checking if there are files in the test file directory
+- checking if we received the right number of .mp3 files
 

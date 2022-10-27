@@ -52,7 +52,7 @@ class AppTest:
 
 #Run call
 def main(): 
-    received_file_list, post_content_list = AppTest(app_host_port, resample_endpoint,test_files_dir).send_receive_files()
+    received_file_list, post_content_list = AppTest(app_host_port, resample_endpoint,test_files_dir, resampled_files_dir).send_receive_files()
 
     print(f'Received files {received_file_list} back from resample app')
 
