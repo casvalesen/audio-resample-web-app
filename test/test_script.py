@@ -48,28 +48,31 @@ class AppTest:
 
         return received_file_list, post_content_list
 
-    def test_files_exist(self):
-
-        assert len(os.listdir(self.test_files_dir)) != 0 
-
-        return None 
-
-    def test_responses(self):
-        '''
-        Tests we received as many files back as posted
-        '''
-    
-        received_file_list, post_content_list = self.main()
-
-        #Check that we got back as many files as we expected
-        assert len(received_file_list)==len(post_content_list)
-
-        return None
-
+#Run call
 def main(): 
     received_file_list, post_content_list = AppTest(app_host_port, resample_endpoint,test_files_dir).send_receive_files()
 
     print(f'Received files {received_file_list} back from resample app')
+
+
+#Add tests
+def test_files_exist(app_test = AppTest(app_host_port, resample_endpoint,test_files_dir)):
+
+    assert len(os.listdir(app_test.test_files_dir)) != 0 
+
+    return None 
+
+def test_responses(app_test = AppTest(app_host_port, resample_endpoint,test_files_dir)):
+    '''
+    Tests we received as many files back as posted
+    '''
+
+    received_file_list, post_content_list = app_test.main()
+
+    #Check that we got back as many files as we expected
+    assert len(received_file_list)==len(post_content_list)
+
+    return None
 
 if __name__=="__main__":
     main()
