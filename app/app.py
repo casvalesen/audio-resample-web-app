@@ -72,7 +72,6 @@ def resample_files(file_path, file):
     returns: dict, with filename, starttime, endtime and resampled test file
     
     '''
-
     #Log starttime of process
     starttime = time.strftime("%X")
 
