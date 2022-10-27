@@ -1,0 +1,16 @@
+python==3.8
+python-multipart
+pysoundfile
+numpy 
+scipy
+librosa
+fastapi
+uvicorn 
+pyaml
+ipykernel
+pytest
+click
+aiohttp
+pip
+ray
+ray[serve]

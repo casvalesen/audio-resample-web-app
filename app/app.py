@@ -66,8 +66,8 @@ def resample_files(file_path, file):
     '''
     Resampling function. 
 
-    file_path: str, 
-    file: 
+    file_path: str, path to file
+    file: bytes stream from Uploadfile object
 
     returns: dict, with filename, starttime, endtime and resampled test file
     
@@ -112,7 +112,16 @@ async def message(message: TestMessage):
     return result
 
 @app.post("/resample_parallel")
-async def resample_parallel(files: List[UploadFile]=File(...), response_model = List[FileResponse]):
+async def resample_parallel(files: List[UploadFile]=File(...)):
+    '''
+    Accepts a post request, calls the resample function and returns resampled files. 
+    
+    args: 
+        files: A list of fastapi UploadFile objects
+
+    returns: 
+        FileResponse: Containing the zipped audio files. 
+    '''
 
     resampled_result_ids = []
 
