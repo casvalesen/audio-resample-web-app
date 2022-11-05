@@ -16,10 +16,6 @@ from pydantic import BaseModel
 import librosa
 import soundfile as sf
 
-#changes 
-from scipy.io import wavfile
-from pydub import AudioSegment 
-
 #Set program configs
 PATH_TO_CONFIG = 'config.yml'
 
@@ -153,13 +149,7 @@ async def resample_parallel(files: List[UploadFile]=File(...)):
     with zipfile.ZipFile(zip_file_path, mode = 'w') as archive: 
         for resampled_result in resampled_results:
                 resampled_file_path = f'resampled_{resampled_result["filename"]}.{output_file_extension}'
-                resampled_file_path_wav = f'resampled_{resampled_result["filename"]}.wav'
-
-                #sf.write(resampled_file_path, resampled_result["resampled_file"], samplerate = output_sample_rate, format = output_file_type)
-                wavfile.write(resampled_file_path_wav, rate = output_sample_rate, data = resampled_result["resampled_file"])
-                song = AudioSegment.from_wav(resampled_file_path_wav)
-                song.export(resampled_file_path, format = output_file_extension)
-
+                sf.write(resampled_file_path, resampled_result["resampled_file"], samplerate = output_sample_rate, format = output_file_type)
                 file_list.append(resampled_file_path) 
                 archive.write(resampled_file_path)
     
@@ -171,4 +161,4 @@ async def resample_parallel(files: List[UploadFile]=File(...)):
     return FileResponse(zip_file_path, headers = {'filename':zip_file_path}, background = BackgroundTask(cleanup))
 
 if __name__ == "__main__":
-    uvicorn.run("app_improved:app", host="0.0.0.0", port=5000)
+    uvicorn.run("app:app", host="0.0.0.0", port=5000)

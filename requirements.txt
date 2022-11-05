@@ -1,8 +1,9 @@
 python-multipart
-pysoundfile
+pysoundfile==0.9.0.post1
 numpy 
 scipy
 librosa
+pydub
 fastapi
 uvicorn 
 pyaml

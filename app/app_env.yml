@@ -18,5 +18,6 @@ dependencies:
 - aiohttp
 - pip
 - pip: 
+  - pydub
   - ray
   - ray[serve]
