@@ -171,4 +171,4 @@ async def resample_parallel(files: List[UploadFile]=File(...)):
     return FileResponse(zip_file_path, headers = {'filename':zip_file_path}, background = BackgroundTask(cleanup))
 
 if __name__ == "__main__":
-    uvicorn.run("app_improved:app", host="0.0.0.0", port=5000)
+    uvicorn.run("app:app", host="0.0.0.0", port=5000)
